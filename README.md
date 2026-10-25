@@ -6,3 +6,14 @@ It is so simple program which consist little high level python
 
 # app.py contains basic hello world of langgraph
 # basic_code.ipynb file conatin real frat code that contains graphs nodes , edges, start, end etc
+
+
+Prompt chaining.
+# it introduce new workflow in it
+# it is also linear workflow
+
+Quadtric_eq,ipynb
+# it contain a conditional workflow.
+# which solve quadtric equation
+# without llm 
+![alt text](image.png)
