@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINETIX // Next-Gen Performance & Urban Footwear</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-content">
+            <span>⚡ FREE WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $150</span>
+            <span class="dot">•</span>
+            <span>USE CODE <strong class="text-accent">"KINETIX15"</strong> FOR 15% OFF FIRST ORDER</span>
+            <span class="dot">•</span>
+            <span>NEXT-GEN NITRO-CUSHION TECH RELEASED TODAY</span>
+        </div>
+    </div>
+
+    <!-- Main Header / Navigation -->
+    <header class="site-header" id="header">
+        <div class="header-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-mark">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M4 24L14 4L20 14L28 8L22 28L12 20L4 24Z" stroke="url(#logo-grad)" stroke-width="3" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="logo-grad" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#ccff00"/>
+                                <stop offset="1" stop-color="#00f0ff"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">KINETIX<span class="text-accent">.</span></span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#catalog" class="nav-link">Shop Collection</a>
+                <a href="#tech" class="nav-link">Technology</a>
+                <a href="#customizer" class="nav-link">3D Studio</a>
+                <a href="#fit-finder" class="nav-link">Fit Finder</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn search-trigger" id="searchBtn" aria-label="Search products">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="icon-btn wishlist-trigger" id="wishlistHeaderBtn" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge-count wishlist-count">0</span>
+                </button>
+                <button class="cart-trigger-btn" id="cartToggleBtn" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-text">Cart</span>
+                    <span class="badge-count cart-count" id="cartCount">0</span>
+                </button>
+                <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-container">
+            <div class="mobile-header">
+                <span class="logo-text">KINETIX<span class="text-accent">.</span></span>
+                <button class="icon-btn close-menu-btn" id="closeMobileMenu"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="mobile-links">
+                <a href="#hero" class="mobile-link">Home</a>
+                <a href="#catalog" class="mobile-link">Shop Collection</a>
+                <a href="#tech" class="mobile-link">Technology</a>
+                <a href="#customizer" class="mobile-link">3D Studio Customizer</a>
+                <a href="#fit-finder" class="mobile-link">Fit Finder Tool</a>
+                <a href="#reviews" class="mobile-link">Athlete Reviews</a>
+            </div>
+            <div class="mobile-footer">
+                <p>Engineered for Speed & Precision</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-modal">
+            <div class="search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search sneakers (e.g. Nitro, Carbon, Trail, Aero)..." autocomplete="off">
+                <button class="close-search" id="closeSearch"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-hint">Type to search sneakers by name, category, or feature...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-glow"></div>
+        <canvas id="heroParticleCanvas" class="hero-particle-canvas"></canvas>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge" data-gsap="fade-down">
+                    <span class="pulse-dot"></span>
+                    <span>2025 FLAGSHIP DROP</span>
+                </div>
+                <h1 class="hero-title" data-gsap="split-title">
+                    HYPER <br>
+                    <span class="text-gradient">VELOCITY</span> X1
+                </h1>
+                <p class="hero-description" data-gsap="fade-up">
+                    Experience zero-gravity motion with our re-engineered Nitro-Grid™ foam sole and carbon vector plate. Unrivaled energy return meets futuristic minimalist aesthetics.
+                </p>
+
+                <div class="hero-specs-row" data-gsap="fade-up">
+                    <div class="spec-item">
+                        <span class="spec-num">210g</span>
+                        <span class="spec-label">Ultra-Featherweight</span>
+                    </div>
+                    <div class="spec-divider"></div>
+                    <div class="spec-item">
+                        <span class="spec-num">89%</span>
+                        <span class="spec-label">Energy Return</span>
+                    </div>
+                    <div class="spec-divider"></div>
+                    <div class="spec-item">
+                        <span class="spec-num">3K</span>
+                        <span class="spec-label">Carbon Weave</span>
+                    </div>
+                </div>
+
+                <div class="hero-actions" data-gsap="fade-up">
+                    <a href="#catalog" class="btn btn-primary btn-glow">
+                        <span>Shop Flagship - $219</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <button class="btn btn-secondary" id="heroCustomizerBtn">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Color Studio</span>
+                    </button>
+                </div>
+
+                <!-- Hero Color Swatch Selector -->
+                <div class="hero-color-selector">
+                    <span class="selector-label">COLORWAY:</span>
+                    <div class="hero-swatches">
+                        <button class="swatch-btn active" data-color="neon" data-name="Cyber Neon Glow" style="--swatch-color: #ccff00; --swatch-bg: #121800;"></button>
+                        <button class="swatch-btn" data-color="cyan" data-name="Electric Cyan Tide" style="--swatch-color: #00f0ff; --swatch-bg: #001824;"></button>
+                        <button class="swatch-btn" data-color="crimson" data-name="Crimson Volt Red" style="--swatch-color: #ff0055; --swatch-bg: #24000c;"></button>
+                        <button class="swatch-btn" data-color="stealth" data-name="Obsidian Stealth White" style="--swatch-color: #f8fafc; --swatch-bg: #1e293b;"></button>
+                    </div>
+                    <span class="color-name-display" id="heroColorName">Cyber Neon Glow</span>
+                </div>
+            </div>
+
+            <!-- Dynamic Interactive Visualizer Shoe Frame -->
+            <div class="hero-visual-wrapper" data-gsap="shoe-float">
+                <div class="hero-visual-card">
+                    <div class="glow-ring"></div>
+                    <div class="floating-tech-tag tag-top">
+                        <i class="fa-solid fa-bolt text-accent"></i> Nitro-Grid 2.0
+                    </div>
+                    <div class="floating-tech-tag tag-bottom">
+                        <i class="fa-solid fa-shield-halved text-cyan"></i> Carbon Lock Plate
+                    </div>
+
+                    <!-- Interactive Dynamic Rendered Sneaker SVG Vector -->
+                    <div class="hero-shoe-stage" id="heroShoeStage">
+                        <svg id="heroShoeSvg" viewBox="0 0 800 500" class="hero-shoe-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <filter id="glow-neon" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="12" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                                <linearGradient id="sole-grad-neon" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#0f172a"/>
+                                    <stop offset="50%" stop-color="#1e293b"/>
+                                    <stop offset="100%" stop-color="#ccff00"/>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Shadow -->
+                            <ellipse cx="400" cy="440" rx="300" ry="24" fill="#000000" opacity="0.6" filter="blur(15px)" class="shoe-shadow"/>
+
+                            <!-- Sneaker Silhouette Multi-Layers -->
+                            <g class="shoe-group">
+                                <!-- Midsole cushion base -->
+                                <path id="svg-sole" d="M120,380 C160,395 240,410 400,405 C540,400 660,370 700,340 C710,332 705,315 680,315 C600,315 500,345 380,345 C260,345 180,325 130,335 C110,340 100,370 120,380 Z" fill="#ccff00" class="shoe-part sole-glow" filter="url(#glow-neon)"/>
+                                <path d="M125,375 C165,390 245,405 405,400 C540,395 655,368 695,338 C680,335 590,340 380,340 C260,340 185,320 135,330 Z" fill="#111827"/>
+                                
+                                <!-- Foam Air Pod Bubbles -->
+                                <circle cx="220" cy="370" r="14" fill="#ccff00" opacity="0.8" class="shoe-part accent-glow"/>
+                                <circle cx="265" cy="373" r="16" fill="#ccff00" opacity="0.8" class="shoe-part accent-glow"/>
+                                <circle cx="315" cy="374" r="17" fill="#ccff00" opacity="0.8" class="shoe-part accent-glow"/>
+
+                                <!-- Upper Body Mesh -->
+                                <path id="svg-upper" d="M135,330 C150,280 200,210 290,170 C360,140 430,150 490,195 C550,240 600,265 680,315 C640,325 540,335 380,335 C250,335 180,320 135,330 Z" fill="#0f172a" stroke="#1e293b" stroke-width="3"/>
+
+                                <!-- Breathable Mesh Pattern overlay -->
+                                <path d="M220,240 Q300,190 420,210 Q500,230 620,300" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="6 6"/>
+                                <path d="M240,260 Q320,210 440,230 Q520,250 640,310" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="6 6"/>
+
+                                <!-- Aerodynamic Swoosh Vector Accent -->
+                                <path id="svg-accent" d="M250,285 C340,230 460,210 590,260 C510,275 410,290 310,310 Z" fill="#ccff00" opacity="0.95" class="shoe-part accent-fill"/>
+
+                                <!-- Carbon Heel Cage -->
+                                <path d="M135,330 C140,290 170,250 220,235 C230,280 200,320 135,330 Z" fill="#1e293b" stroke="#ccff00" stroke-width="2" class="shoe-part accent-stroke"/>
+
+                                <!-- Collar & Sock Liner -->
+                                <path d="M300,165 C340,120 400,110 440,150 C410,165 350,175 300,165 Z" fill="#020617" stroke="#334155" stroke-width="2"/>
+
+                                <!-- Laces & Eyestays -->
+                                <path d="M340,190 L400,160 M360,210 L420,180 M380,230 L440,200 M400,250 L460,220" stroke="#f8fafc" stroke-width="4" stroke-linecap="round"/>
+                                
+                                <!-- Toe Cap Reinforcement -->
+                                <path d="M620,300 C650,308 685,320 695,338 C665,335 620,325 600,315 Z" fill="#334155" opacity="0.8"/>
+                            </g>
+                        </svg>
+
+                        <!-- Interactive Rotation Hint Badge -->
+                        <div class="interactive-drag-hint">
+                            <i class="fa-solid fa-arrows-rotate spin-icon"></i>
+                            <span>Move cursor to inspect 3D dynamic tilt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Features Ticker -->
+    <div class="ticker-banner">
+        <div class="ticker-track">
+            <span>CARBON VECTOR PLATE</span> <i class="fa-solid fa-asterisk"></i>
+            <span>NITRO-GRID CUSHIONING</span> <i class="fa-solid fa-asterisk"></i>
+            <span>ZERO-WASTE RECYCLED MESH</span> <i class="fa-solid fa-asterisk"></i>
+            <span>BIOMORPHIC FIT LOCK</span> <i class="fa-solid fa-asterisk"></i>
+            <span>ULTRA LIGHTWEIGHT 210G</span> <i class="fa-solid fa-asterisk"></i>
+            <span>30-DAY PERFORMANCE TRIAL</span> <i class="fa-solid fa-asterisk"></i>
+            <span>CARBON VECTOR PLATE</span> <i class="fa-solid fa-asterisk"></i>
+            <span>NITRO-GRID CUSHIONING</span> <i class="fa-solid fa-asterisk"></i>
+            <span>ZERO-WASTE RECYCLED MESH</span> <i class="fa-solid fa-asterisk"></i>
+            <span>BIOMORPHIC FIT LOCK</span> <i class="fa-solid fa-asterisk"></i>
+        </div>
+    </div>
+
+    <!-- Catalog Section with Interactive Filtering -->
+    <section class="section catalog-section" id="catalog">
+        <div class="container">
+            <div class="section-header center">
+                <span class="sub-heading">THE 2025 FOOTWEAR COLLECTION</span>
+                <h2 class="section-title">ENGINEERED FOR <span class="text-gradient">EVERY TERRAIN</span></h2>
+                <p class="section-desc">Select from our elite lineup of high-performance runners, urban streetwear statement pieces, and rugged trail blazers.</p>
+            </div>
+
+            <!-- Filter Categories Tabs -->
+            <div class="catalog-filter-bar">
+                <div class="filter-tabs" id="filterTabs">
+                    <button class="filter-btn active" data-filter="all">All Models (<span class="count">8</span>)</button>
+                    <button class="filter-btn" data-filter="running">Performance Running</button>
+                    <button class="filter-btn" data-filter="lifestyle">Urban Lifestyle</button>
+                    <button class="filter-btn" data-filter="trail">Trail & Outdoor</button>
+                    <button class="filter-btn" data-filter="limited">Limited Drops</button>
+                </div>
+                <div class="sort-wrapper">
+                    <label for="sortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort:</label>
+                    <select id="sortSelect" class="custom-select">
+                        <option value="featured">Featured First</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Product items will be dynamically generated by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology & Innovation Section -->
+    <section class="section tech-section" id="tech">
+        <div class="container">
+            <div class="tech-grid">
+                <div class="tech-info">
+                    <span class="sub-heading">LABORATORY INNOVATION</span>
+                    <h2 class="section-title">BREAKTHROUGH <span class="text-gradient">SOLE ARCHITECTURE</span></h2>
+                    <p class="section-desc">We reimagined propulsion from the ground up. Over 400 prototype iterations culminated in our proprietary 3-stage kinetic energy return system.</p>
+
+                    <div class="tech-accordion" id="techAccordion">
+                        <div class="accordion-item active" data-tech="nitro">
+                            <div class="accordion-header">
+                                <div class="acc-title">
+                                    <i class="fa-solid fa-bolt text-accent"></i>
+                                    <span>Nitro-Grid 2.0 Cushion Foam</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-down acc-icon"></i>
+                            </div>
+                            <div class="accordion-body">
+                                Sub-critical nitrogen-infused TPU matrix offering 89% energy springback while reducing midsole weight by 35% compared to standard EVA.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-tech="carbon">
+                            <div class="accordion-header">
+                                <div class="acc-title">
+                                    <i class="fa-solid fa-layer-group text-cyan"></i>
+                                    <span>3K Carbon Vector Launch Plate</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-down acc-icon"></i>
+                            </div>
+                            <div class="accordion-body">
+                                Full-length curved carbon fiber plate stabilizes foot strike and leverages natural toe-off gait to maximize forward propulsion.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-tech="mesh">
+                            <div class="accordion-header">
+                                <div class="acc-title">
+                                    <i class="fa-solid fa-wind text-accent"></i>
+                                    <span>AeroMesh™ Recycled Upper</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-down acc-icon"></i>
+                            </div>
+                            <div class="accordion-body">
+                                Precision 3D woven threads crafted from 100% ocean-bound plastics. Offers zone-specific heat dissipation and dynamic stretch support.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-tech="tread">
+                            <div class="accordion-header">
+                                <div class="acc-title">
+                                    <i class="fa-solid fa-grip text-cyan"></i>
+                                    <span>GripMax Multi-Surface Outsole</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-down acc-icon"></i>
+                            </div>
+                            <div class="accordion-body">
+                                Sticky rubber compound with biomimetic micro-lugs inspired by gecko soles for unwavering traction on wet asphalt and loose gravel.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-interactive-stage">
+                    <div class="spec-canvas-card">
+                        <div class="card-glass-header">
+                            <span class="pulse-indicator"></span>
+                            <span id="techDisplayTitle">NITRO-GRID 2.0 SIMULATION</span>
+                        </div>
+                        <div class="interactive-diagram" id="techDiagram">
+                            <div class="hotspot-pin pin-1" data-title="AeroMesh Upper" data-desc="Zone-engineered breathable knit mesh with targeted lockdown zones.">
+                                <div class="pin-dot"></div>
+                                <div class="pin-pulse"></div>
+                                <div class="pin-tooltip">AeroMesh Upper</div>
+                            </div>
+
+                            <div class="hotspot-pin pin-2" data-title="Carbon Vector Plate" data-desc="Torsional stability plate for explosive energy conversion.">
+                                <div class="pin-dot"></div>
+                                <div class="pin-pulse"></div>
+                                <div class="pin-tooltip">Carbon Vector Plate</div>
+                            </div>
+
+                            <div class="hotspot-pin pin-3" data-title="Nitro-Grid Foam" data-desc="Supercritical nitrogen foam delivering plush, responsive cushioning.">
+                                <div class="pin-dot"></div>
+                                <div class="pin-pulse"></div>
+                                <div class="pin-tooltip">Nitro Foam Core</div>
+                            </div>
+
+                            <div class="hotspot-pin pin-4" data-title="GripMax Outsole" data-desc="Biomimetic high-friction compound for wet/dry micro-grip.">
+                                <div class="pin-dot"></div>
+                                <div class="pin-pulse"></div>
+                                <div class="pin-tooltip">GripMax Outsole</div>
+                            </div>
+
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=80" alt="Tech Shoe Model" class="tech-shoe-img" id="techShoeImg">
+                        </div>
+                        <div class="tech-hotspot-info" id="hotspotInfoBox">
+                            <h4 id="hotspotTitle">Click hotspots to inspect component specs</h4>
+                            <p id="hotspotDesc">Hover or tap on any indicator pin on the sneaker graphic to view lab test engineering data.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Interactive Customizer Studio Section -->
+    <section class="section customizer-section" id="customizer">
+        <div class="container">
+            <div class="section-header center">
+                <span class="sub-heading">KINETIX LAB // CUSTOM STUDIO</span>
+                <h2 class="section-title">BUILD YOUR <span class="text-gradient">ONE-OF-ONE</span> PAIR</h2>
+                <p class="section-desc">Customize every element of your high-performance sneaker in real-time. Pick colors, soles, accents, and custom heel engravings.</p>
+            </div>
+
+            <div class="customizer-wrapper">
+                <!-- Preview Canvas Stage -->
+                <div class="customizer-preview">
+                    <div class="studio-badge"><i class="fa-solid fa-cube"></i> LIVE 3D PREVIEW</div>
+                    <div class="custom-shoe-stage">
+                        <svg id="customShoeSvg" viewBox="0 0 800 500" class="custom-shoe-svg" fill="none">
+                            <!-- Base Shadow -->
+                            <ellipse cx="400" cy="430" rx="280" ry="22" fill="#000" opacity="0.6" filter="blur(14px)"/>
+
+                            <!-- Dynamic SVG Custom Shoe Parts -->
+                            <g id="customShoeGroup">
+                                <!-- Sole -->
+                                <path id="part-sole" d="M120,380 C160,395 240,410 400,405 C540,400 660,370 700,340 C710,332 705,315 680,315 C600,315 500,345 380,345 C260,345 180,325 130,335 C110,340 100,370 120,380 Z" fill="#ccff00"/>
+                                <path d="M125,375 C165,390 245,405 405,400 C540,395 655,368 695,338 C680,335 590,340 380,340 C260,340 185,320 135,330 Z" fill="#111827"/>
+
+                                <!-- Cushion Cushion Pods -->
+                                <circle id="part-pods" cx="240" cy="372" r="16" fill="#00f0ff"/>
+                                <circle cx="295" cy="374" r="17" fill="#00f0ff"/>
+                                <circle cx="350" cy="374" r="17" fill="#00f0ff"/>
+
+                                <!-- Upper Body -->
+                                <path id="part-upper" d="M135,330 C150,280 200,210 290,170 C360,140 430,150 490,195 C550,240 600,265 680,315 C640,325 540,335 380,335 C250,335 180,320 135,330 Z" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+                                <!-- Vector Accent Swoosh -->
+                                <path id="part-accent" d="M250,285 C340,230 460,210 590,260 C510,275 410,290 310,310 Z" fill="#ccff00"/>
+
+                                <!-- Laces -->
+                                <path id="part-laces" d="M340,190 L400,160 M360,210 L420,180 M380,230 L440,200 M400,250 L460,220" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+
+                                <!-- Heel Cap -->
+                                <path id="part-heel" d="M135,330 C140,290 170,250 220,235 C230,280 200,320 135,330 Z" fill="#334155"/>
+
+                                <!-- Custom Text Engraving on Sole -->
+                                <text id="customEngravingText" x="420" y="380" fill="#ffffff" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" letter-spacing="2">KINETIX LAB</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="customizer-summary-bar">
+                        <div class="summary-info">
+                            <span class="custom-model-name">CUSTOM KINETIX X-LAB</span>
+                            <span class="custom-price">$249.00 USD</span>
+                        </div>
+                        <button class="btn btn-primary" id="addCustomToCartBtn">
+                            <i class="fa-solid fa-cart-plus"></i> Order Custom Pair
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Customizer Control Controls -->
+                <div class="customizer-controls">
+                    <div class="control-group">
+                        <label class="control-label"><i class="fa-solid fa-palette"></i> Select Component to Edit:</label>
+                        <div class="component-tabs" id="componentTabs">
+                            <button class="comp-tab active" data-part="upper">Upper Mesh</button>
+                            <button class="comp-tab" data-part="sole">Midsole Foam</button>
+                            <button class="comp-tab" data-part="accent">Vector Logo</button>
+                            <button class="comp-tab" data-part="laces">Laces</button>
+                            <button class="comp-tab" data-part="heel">Heel Counter</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Choose Color Palette:</label>
+                        <div class="custom-color-grid" id="customColorGrid">
+                            <button class="color-pick-btn active" data-color="#ccff00" title="Volt Lime" style="background: #ccff00;"></button>
+                            <button class="color-pick-btn" data-color="#00f0ff" title="Cyber Cyan" style="background: #00f0ff;"></button>
+                            <button class="color-pick-btn" data-color="#ff0055" title="Hot Pink" style="background: #ff0055;"></button>
+                            <button class="color-pick-btn" data-color="#3b82f6" title="Electric Blue" style="background: #3b82f6;"></button>
+                            <button class="color-pick-btn" data-color="#8b5cf6" title="Neon Purple" style="background: #8b5cf6;"></button>
+                            <button class="color-pick-btn" data-color="#f97316" title="Solar Orange" style="background: #f97316;"></button>
+                            <button class="color-pick-btn" data-color="#f8fafc" title="Pure White" style="background: #f8fafc;"></button>
+                            <button class="color-pick-btn" data-color="#0f172a" title="Obsidian Black" style="background: #0f172a;"></button>
+                            <button class="color-pick-btn" data-color="#475569" title="Gunmetal Gray" style="background: #475569;"></button>
+                            <button class="color-pick-btn" data-color="#eab308" title="Metallic Gold" style="background: #eab308;"></button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label"><i class="fa-solid fa-font"></i> Custom Heel Engraving (Max 12 Chars):</label>
+                        <input type="text" id="engravingInput" class="custom-input" placeholder="e.g. SPEED DEMON" maxlength="12">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label"><i class="fa-solid fa-ruler-horizontal"></i> Select Size (US Men's):</label>
+                        <div class="custom-size-selector" id="customSizeSelector">
+                            <button class="size-chip" data-size="8">8</button>
+                            <button class="size-chip" data-size="8.5">8.5</button>
+                            <button class="size-chip active" data-size="9">9</button>
+                            <button class="size-chip" data-size="9.5">9.5</button>
+                            <button class="size-chip" data-size="10">10</button>
+                            <button class="size-chip" data-size="10.5">10.5</button>
+                            <button class="size-chip" data-size="11">11</button>
+                            <button class="size-chip" data-size="12">12</button>
+                        </div>
+                    </div>
+
+                    <div class="preset-row">
+                        <span>Or Load Presets:</span>
+                        <button class="preset-btn" data-preset="cyberpunk">Cyberpunk</button>
+                        <preset-btn class="preset-btn" data-preset="stealth">Stealth Black</preset-btn>
+                        <button class="preset-btn" data-preset="solar">Solar Flare</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Fit Finder Tool Section -->
+    <section class="section fit-finder-section" id="fit-finder">
+        <div class="container">
+            <div class="fit-finder-card">
+                <div class="fit-header">
+                    <div class="icon-circle"><i class="fa-solid fa-ruler-combined"></i></div>
+                    <h2>KINETIX PERFECT-FIT™ CALCULATOR</h2>
+                    <p>Answer 3 quick questions to discover your ideal sneaker model and size recommendation with 99.4% accuracy.</p>
+                </div>
+
+                <div class="fit-wizard" id="fitWizard">
+                    <!-- Step 1 -->
+                    <div class="wizard-step active" data-step="1">
+                        <span class="step-num">Step 1 of 3</span>
+                        <h3>What is your primary shoe use?</h3>
+                        <div class="option-cards">
+                            <button class="wiz-opt-btn active" data-val="running">
+                                <i class="fa-solid fa-person-running"></i>
+                                <span>Road Running & Marathons</span>
+                            </button>
+                            <button class="wiz-opt-btn" data-val="gym">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                <span>Gym & Cross Training</span>
+                            </button>
+                            <button class="wiz-opt-btn" data-val="lifestyle">
+                                <i class="fa-solid fa-city"></i>
+                                <span>Daily Urban Wear</span>
+                            </button>
+                            <button class="wiz-opt-btn" data-val="trail">
+                                <i class="fa-solid fa-mountain"></i>
+                                <span>Outdoor Trail & Hiking</span>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary wiz-next-btn" data-next="2">Next Step <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="wizard-step" data-step="2">
+                        <span class="step-num">Step 2 of 3</span>
+                        <h3>How would you describe your foot width?</h3>
+                        <div class="option-cards">
+                            <button class="wiz-opt-btn" data-val="narrow">
+                                <i class="fa-solid fa-compress"></i>
+                                <span>Narrow Foot</span>
+                            </button>
+                            <button class="wiz-opt-btn active" data-val="standard">
+                                <i class="fa-solid fa-arrows-left-right"></i>
+                                <span>Standard / Regular</span>
+                            </button>
+                            <button class="wiz-opt-btn" data-val="wide">
+                                <i class="fa-solid fa-expand"></i>
+                                <span>Wide Foot</span>
+                            </button>
+                        </div>
+                        <div class="wiz-actions">
+                            <button class="btn btn-secondary wiz-back-btn" data-back="1">Back</button>
+                            <button class="btn btn-primary wiz-next-btn" data-next="3">Next Step <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="wizard-step" data-step="3">
+                        <span class="step-num">Step 3 of 3</span>
+                        <h3>Enter your standard size (US):</h3>
+                        <div class="wiz-size-grid">
+                            <button class="wiz-size-btn" data-size="7">US 7</button>
+                            <button class="wiz-size-btn" data-size="8">US 8</button>
+                            <button class="wiz-size-btn active" data-size="9">US 9</button>
+                            <button class="wiz-size-btn" data-size="10">US 10</button>
+                            <button class="wiz-size-btn" data-size="11">US 11</button>
+                            <button class="wiz-size-btn" data-size="12">US 12</button>
+                        </div>
+                        <div class="wiz-actions">
+                            <button class="btn btn-secondary wiz-back-btn" data-back="2">Back</button>
+                            <button class="btn btn-primary btn-glow" id="calculateFitBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Recommendation</button>
+                        </div>
+                    </div>
+
+                    <!-- Result Screen -->
+                    <div class="wizard-result hidden" id="wizResult">
+                        <div class="result-badge"><i class="fa-solid fa-circle-check"></i> RECOMMENDED MATCH</div>
+                        <h3 id="recShoeTitle">Hyper Velocity X1 - Size US 9.5</h3>
+                        <p id="recShoeDesc">Based on your regular running routine and standard foot width, we recommend sizing up by 0.5 for ideal toe-box splay and nitro cushioning efficiency.</p>
+                        <div class="result-actions">
+                            <button class="btn btn-primary" id="recViewBtn">View Product Match</button>
+                            <button class="btn btn-secondary" id="recResetBtn">Reset Calculator</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Athlete Endorsements & Reviews Section -->
+    <section class="section reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header center">
+                <span class="sub-heading">TESTED BY PRO ATHLETES & RUNNERS</span>
+                <h2 class="section-title">PROVEN ON THE <span class="text-gradient">STREET & TRACK</span></h2>
+            </div>
+
+            <div class="reviews-slider-wrapper">
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="review-quote">"The Nitro-Grid response is unlike any runner I've worn in 10 years of marathon training. Shaved 42 seconds off my 10k PR on the first wear!"</p>
+                        <div class="reviewer-profile">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Reviewer" class="reviewer-avatar">
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Marcus Vance <i class="fa-solid fa-circle-check verified-icon" title="Verified Athlete"></i></span>
+                                <span class="reviewer-tag">Pro Marathoner // Wears Hyper Velocity X1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="review-quote">"The silhouette alone turns heads in Shibuya and NYC, but the actual comfort level for 12-hour city walking days is mind blowing."</p>
+                        <div class="reviewer-profile">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Reviewer" class="reviewer-avatar">
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Kenji Sato <i class="fa-solid fa-circle-check verified-icon"></i></span>
+                                <span class="reviewer-tag">Streetwear Curator // Wears Matrix Runner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="review-quote">"Took the Terra Force through mud, wet granite, and steep alpine trails in Colorado. The GripMax outsole never lost traction once."</p>
+                        <div class="reviewer-profile">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Reviewer" class="reviewer-avatar">
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Elena Rostova <i class="fa-solid fa-circle-check verified-icon"></i></span>
+                                <span class="reviewer-tag">Ultra Trail Athlete // Wears Terra Force</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-content">
+                    <span class="sub-heading">JOIN THE KINETIX CLUB</span>
+                    <h2>UNLOCK 15% OFF YOUR FIRST DROP</h2>
+                    <p>Get exclusive early access to limited sneaker releases, lab drop alerts, and VIP runner events.</p>
+
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="input-wrap">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="newsletterEmail" placeholder="Enter your email address..." required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Claim 15% Off</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    <div class="form-feedback" id="newsletterFeedback"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="#" class="brand-logo">
+                        <span class="logo-text">KINETIX<span class="text-accent">.</span></span>
+                    </a>
+                    <p class="footer-desc">
+                        Engineering next-generation athletic footwear through material science, aerodynamic shaping, and zero-gravity cushioning technology.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="#catalog">Flagship Runners</a></li>
+                        <li><a href="#catalog">Urban Lifestyle</a></li>
+                        <li><a href="#catalog">Trail & Outdoor</a></li>
+                        <li><a href="#customizer">Custom 3D Studio</a></li>
+                        <li><a href="#catalog">Limited Editions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Innovation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#tech">Nitro-Grid Foam</a></li>
+                        <li><a href="#tech">Carbon Vector Plate</a></li>
+                        <li><a href="#tech">AeroMesh Fabric</a></li>
+                        <li><a href="#tech">Sustainability Commitment</a></li>
+                        <li><a href="#fit-finder">Fit Finder Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">30-Day Returns</a></li>
+                        <li><a href="#">Size Conversion Guide</a></li>
+                        <li><a href="#">Warranty & Repairs</a></li>
+                        <li><a href="#">Contact Lab Team</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 KINETIX Footwear Labs Inc. All Rights Reserved.</p>
+                <div class="payment-badges">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-apple-pay"></i>
+                    <i class="fa-brands fa-google-pay"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slide-Out Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cartOverlay">
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-drawer-header">
+                <div class="cart-header-title">
+                    <i class="fa-solid fa-bag-shopping text-accent"></i>
+                    <h3>YOUR CART (<span id="cartDrawerCount">0</span>)</h3>
+                </div>
+                <button class="icon-btn close-cart-btn" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Free Shipping Progress Bar -->
+            <div class="free-shipping-bar">
+                <div class="shipping-info">
+                    <span id="shippingText">Add $51.00 more for <strong>FREE Express Shipping</strong></span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="shippingProgress" style="width: 45%;"></div>
+                </div>
+            </div>
+
+            <!-- Cart Items List -->
+            <div class="cart-items-body" id="cartItemsContainer">
+                <!-- Cart items will be rendered dynamically -->
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="cart-drawer-footer">
+                <div class="promo-box">
+                    <input type="text" id="promoCodeInput" placeholder="Promo code (e.g. KINETIX15)" uppercase>
+                    <button class="btn btn-secondary" id="applyPromoBtn">Apply</button>
+                </div>
+                <div class="discount-applied hidden" id="discountRow">
+                    <span>Discount Applied (15% OFF)</span>
+                    <span class="discount-amount" id="discountAmount">-$0.00</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Subtotal:</span>
+                    <span class="total-price" id="cartSubtotal">$0.00</span>
+                </div>
+                <button class="btn btn-primary btn-block btn-glow" id="checkoutBtn">
+                    <span>Proceed to Checkout</span>
+                    <i class="fa-solid fa-lock"></i>
+                </button>
+                <p class="cart-guarantee"><i class="fa-solid fa-shield-check text-accent"></i> 30-Day Risk Free Trial & Free Returns</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="closeQuickView"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-grid" id="quickViewContent">
+                <!-- Dynamically filled by script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification System -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
