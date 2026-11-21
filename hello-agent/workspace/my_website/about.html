@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — BREED Companion Hub</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-500 selection:text-white">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-white shadow-lg shadow-amber-500/30 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-paw text-xl"></i>
+          </div>
+          <div>
+            <span class="text-2xl font-black tracking-tight text-slate-900 group-hover:text-amber-600 transition-colors">BREED<span class="text-amber-500">.</span></span>
+            <span class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Companion Finder</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+          <a href="index.html" class="hover:text-amber-600 transition-colors">Home</a>
+          <a href="index.html#catalog" class="hover:text-amber-600 transition-colors">Breed Catalog</a>
+          <a href="index.html#matchmaker" class="hover:text-amber-600 transition-colors flex items-center gap-1.5">
+            <i class="fa-solid fa-wand-magic-sparkles text-amber-500 text-xs"></i> Matchmaker Quiz
+          </a>
+          <a href="about.html" class="nav-link active transition-colors">About Us</a>
+        </nav>
+
+        <!-- Right Side Actions -->
+        <div class="hidden md:flex items-center gap-4">
+          <!-- Saved Breeds Button -->
+          <a href="index.html#catalog" class="relative px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-all flex items-center gap-2">
+            <i class="fa-solid fa-heart text-red-500"></i>
+            <span>Saved Breeds</span>
+            <span id="fav-count-badge" class="hidden px-2 py-0.5 rounded-full bg-red-500 text-white text-[10px] font-extrabold">0</span>
+          </a>
+
+          <!-- Compare CTA -->
+          <a href="index.html#catalog" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-md flex items-center gap-2">
+            <i class="fa-solid fa-code-compare text-amber-400"></i> Compare Breeds
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="block py-2.5 px-4 rounded-xl text-slate-700 hover:bg-slate-50 font-semibold text-sm">Home</a>
+      <a href="index.html#catalog" class="block py-2.5 px-4 rounded-xl text-slate-700 hover:bg-slate-50 font-semibold text-sm">Breed Catalog</a>
+      <a href="index.html#matchmaker" class="block py-2.5 px-4 rounded-xl text-slate-700 hover:bg-slate-50 font-semibold text-sm">Matchmaker Quiz</a>
+      <a href="about.html" class="block py-2.5 px-4 rounded-xl bg-amber-50 text-amber-700 font-bold text-sm">About Us</a>
+    </div>
+  </header>
+
+
+  <!-- ================= ABOUT HERO ================= -->
+  <section class="relative py-20 bg-gradient-to-b from-amber-50/70 via-slate-50 to-slate-50 overflow-hidden">
+    <div class="blob-shape bg-amber-200/50 w-96 h-96 -top-20 -left-20"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
+      <span class="px-4 py-1.5 rounded-full bg-amber-100 text-amber-800 text-xs font-extrabold uppercase tracking-widest inline-block mb-4 border border-amber-200">
+        <i class="fa-solid fa-heart mr-1.5"></i> Our Story & Mission
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+        Dedicated to Finding the Right Match for Every <span class="text-amber-600">Pet & Family.</span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-600 mt-6 leading-relaxed">
+        BREED was created by veterinarians, animal behavior experts, and passionate pet advocates to replace guesswork with science-backed breed insights, physical characteristics, and ethical adoption guidance.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ================= IMPACT NUMBERS ================= -->
+  <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 bg-slate-900 text-white p-8 sm:p-12 rounded-3xl shadow-xl">
+      
+      <div class="text-center space-y-1">
+        <span class="block text-4xl sm:text-5xl font-black text-amber-400">350+</span>
+        <span class="text-xs text-slate-300 uppercase tracking-wider font-semibold">Breeds Cataloged</span>
+      </div>
+
+      <div class="text-center space-y-1">
+        <span class="block text-4xl sm:text-5xl font-black text-amber-400">50K+</span>
+        <span class="text-xs text-slate-300 uppercase tracking-wider font-semibold">Quiz Matches Made</span>
+      </div>
+
+      <div class="text-center space-y-1">
+        <span class="block text-4xl sm:text-5xl font-black text-amber-400">120+</span>
+        <span class="text-xs text-slate-300 uppercase tracking-wider font-semibold">Shelter Partners</span>
+      </div>
+
+      <div class="text-center space-y-1">
+        <span class="block text-4xl sm:text-5xl font-black text-amber-400">100%</span>
+        <span class="text-xs text-slate-300 uppercase tracking-wider font-semibold">Vet Reviewed Data</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= STORY & TIMELINE ================= -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Visual Image Grid -->
+      <div class="lg:col-span-6 relative">
+        <div class="grid grid-cols-2 gap-4">
+          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80" alt="Dogs playing" class="rounded-3xl shadow-md h-64 object-cover w-full">
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80" alt="Cat lounging" class="rounded-3xl shadow-md h-64 object-cover w-full mt-6">
+        </div>
+        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white px-6 py-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+          <i class="fa-solid fa-award text-amber-500 text-2xl"></i>
+          <div>
+            <span class="block text-xs font-bold text-slate-900">Awarded #1 Pet Guide</span>
+            <span class="block text-[10px] text-slate-500">Pet Welfare Foundation 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="lg:col-span-6 space-y-6">
+        <span class="text-xs font-extrabold text-amber-600 uppercase tracking-widest block">How We Started</span>
+        <h2 class="text-3xl font-extrabold text-slate-900">Bridging the Gap Between Pet Expectations & Reality</h2>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Too many pets end up in shelters simply because families didn't realize a breed's exercise demands, shedding habits, or training needs before bringing them home.
+        </p>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          We founded <strong>BREED</strong> to provide clear, transparent, and objective breed profiles. By helping future owners understand energy ratings, kid-friendliness, and health considerations before adopting or buying, we help form lifelong bonds.
+        </p>
+
+        <div class="space-y-3 pt-2">
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</div>
+            <p class="text-xs text-slate-700 font-medium">Clear metrics on coat grooming, trainability, and energy scores.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</div>
+            <p class="text-xs text-slate-700 font-medium">Side-by-side comparison matrix for up to 3 breeds.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</div>
+            <p class="text-xs text-slate-700 font-medium">Direct promotion of rescue shelters and ethical breeders.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= CORE VALUES & ETHICAL PLEDGE ================= -->
+  <section id="ethical-pledge" class="py-16 bg-white border-y border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-extrabold text-amber-600 uppercase tracking-wider block mb-2">Pillars of Care</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Our Ethical Guiding Values</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-house-heart"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mb-2">Shelter Adoption First</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            We encourage users to search breed-specific rescues and local animal shelters before making a final decision.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-dna"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mb-2">Genetic Health Transparency</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            We outline predisposed genetic conditions so pet owners are prepared with preventive veterinary care plans.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mb-2">Science-Based Guidance</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Our temperament ratings and exercise advice are derived from animal behavioral science, not anecdotal myths.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-handshake-angle"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mb-2">Lifetime Support</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            From puppyhood and kittenhood to senior care, we provide continuous educational resources.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= EXPERT TEAM ================= -->
+  <section id="team" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-extrabold text-amber-600 uppercase tracking-wider block mb-2">Veterinary Advisory Board</span>
+      <h2 class="text-3xl font-extrabold text-slate-900">Meet the Breed Experts</h2>
+      <p class="text-slate-500 text-sm mt-2">Our team of veterinarians and behaviorists review every single breed profile.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Member 1 -->
+      <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm text-center p-5 card-hover">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80" alt="Dr. Elena" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-amber-50">
+        <h3 class="font-bold text-slate-900 text-base">Dr. Elena Rostova</h3>
+        <span class="text-xs font-semibold text-amber-600 block mb-2">Lead Veterinarian & Geneticist</span>
+        <p class="text-xs text-slate-500 line-clamp-3">Specializing in canine genetics, orthopedic health, and preventive care protocol.</p>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm text-center p-5 card-hover">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Marcus Vance" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-amber-50">
+        <h3 class="font-bold text-slate-900 text-base">Marcus Vance</h3>
+        <span class="text-xs font-semibold text-teal-600 block mb-2">Animal Behavior Specialist</span>
+        <p class="text-xs text-slate-500 line-clamp-3">15+ years of experience training working breeds and resolving anxiety in rescue pets.</p>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm text-center p-5 card-hover">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Dr. Chloe Bennett" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-amber-50">
+        <h3 class="font-bold text-slate-900 text-base">Dr. Chloe Bennett</h3>
+        <span class="text-xs font-semibold text-indigo-600 block mb-2">Feline Health & Nutrition</span>
+        <p class="text-xs text-slate-500 line-clamp-3">Feline medicine authority, passionate about environmental enrichment for indoor cats.</p>
+      </div>
+
+      <!-- Member 4 -->
+      <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm text-center p-5 card-hover">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Sarah Jenkins" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-amber-50">
+        <h3 class="font-bold text-slate-900 text-base">Sarah Jenkins</h3>
+        <span class="text-xs font-semibold text-rose-600 block mb-2">Rescue Network Coordinator</span>
+        <p class="text-xs text-slate-500 line-clamp-3">Connecting prospective owners with verified breed rescues across North America & Europe.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= FAQ SECTION ================= -->
+  <section id="faq" class="py-16 bg-slate-100/70 border-t border-slate-200/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs font-extrabold text-amber-600 uppercase tracking-widest block mb-2">Questions & Answers</span>
+        <h2 class="text-3xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
+      </div>
+
+      <div id="faq-accordion" class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-header w-full p-5 text-left font-bold text-slate-900 flex justify-between items-center text-sm sm:text-base">
+            <span>How are breed temperaments and ratings calculated?</span>
+            <i class="faq-icon fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-300"></i>
+          </button>
+          <div class="faq-body hidden px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Our trait ratings (Energy, Grooming, Trainability, Kid-Friendliness) are compiled using official kennel club standards, veterinary literature, and certified animal behaviorist surveys.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-header w-full p-5 text-left font-bold text-slate-900 flex justify-between items-center text-sm sm:text-base">
+            <span>What does "Hypoallergenic" actually mean for pets?</span>
+            <i class="faq-icon fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-300"></i>
+          </button>
+          <div class="faq-body hidden px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            No pet is 100% allergen-free. However, hypoallergenic breeds shed significantly less hair and produce lower levels of dander or Fel d 1 saliva proteins, making them much less likely to trigger human allergies.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-header w-full p-5 text-left font-bold text-slate-900 flex justify-between items-center text-sm sm:text-base">
+            <span>Does BREED advocate for buying purebred pets or adoption?</span>
+            <i class="faq-icon fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-300"></i>
+          </button>
+          <div class="faq-body hidden px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            We strongly support shelter adoption first! Many purebred and mixed-breed animals are waiting in shelters. If purchasing from a breeder, we strictly advocate for ethical, health-tested, registered breeders.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-header w-full p-5 text-left font-bold text-slate-900 flex justify-between items-center text-sm sm:text-base">
+            <span>Can I compare more than two breeds at once?</span>
+            <i class="faq-icon fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-300"></i>
+          </button>
+          <div class="faq-body hidden px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            Yes! Our Breed Comparison tool allows you to select up to 3 breeds simultaneously and view a detailed side-by-side spec comparison chart covering size, energy, coat, and grooming.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= CONTACT FORM SECTION ================= -->
+  <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-xl">
+      <div class="text-center mb-8">
+        <span class="text-xs font-extrabold text-amber-600 uppercase tracking-widest block mb-1">Get In Touch</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Have Questions or Breed Suggestions?</h2>
+        <p class="text-xs text-slate-500 mt-1">Send a message to our veterinary team or shelter partnership team.</p>
+      </div>
+
+      <form id="contact-form" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Your Full Name</label>
+            <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Your Email Address</label>
+            <input type="email" required placeholder="jane@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Subject</label>
+          <select class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-amber-500 text-slate-700">
+            <option>General Inquiry</option>
+            <option>Shelter Partnership Inquiry</option>
+            <option>Breed Profile Correction / Suggestion</option>
+            <option>Press & Media</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Your Message</label>
+          <textarea rows="4" required placeholder="Write your message here..." class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-amber-500"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold text-xs shadow-lg shadow-amber-500/25 transition-all">
+          Send Message to Team
+        </button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Col 1: Brand -->
+        <div class="space-y-4 md:col-span-1">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-slate-900 text-lg font-bold">
+              <i class="fa-solid fa-paw"></i>
+            </div>
+            <span class="text-2xl font-black text-white tracking-tight">BREED<span class="text-amber-500">.</span></span>
+          </div>
+          <p class="text-xs leading-relaxed text-slate-400">
+            Empowering pet lovers with science-backed breed insights, physical stats, and responsible care guidance.
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="text-xs font-extrabold uppercase text-white tracking-wider mb-4">Quick Navigation</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="index.html" class="hover:text-amber-400 transition-colors">Home Page</a></li>
+            <li><a href="index.html#catalog" class="hover:text-amber-400 transition-colors">Breed Catalog</a></li>
+            <li><a href="index.html#matchmaker" class="hover:text-amber-400 transition-colors">Matchmaker Quiz</a></li>
+            <li><a href="about.html" class="hover:text-amber-400 transition-colors">About Our Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Ethical Pledge -->
+        <div>
+          <h4 class="text-xs font-extrabold uppercase text-white tracking-wider mb-4">Ethical Guidelines</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="#ethical-pledge" class="hover:text-amber-400 transition-colors">Shelter First Policy</a></li>
+            <li><a href="#ethical-pledge" class="hover:text-amber-400 transition-colors">Genetic Health Standards</a></li>
+            <li><a href="#team" class="hover:text-amber-400 transition-colors">Veterinary Board</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div>
+          <h4 class="text-xs font-extrabold uppercase text-white tracking-wider mb-4">Breed Digest Newsletter</h4>
+          <p class="text-xs text-slate-400 mb-3">Subscribe for monthly breed updates and care guides.</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to Breed Digest!', 'success'); this.reset();" class="space-y-2">
+            <input type="email" required placeholder="Enter your email" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs transition-colors">
+              Subscribe
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2025 BREED Companion Hub. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-400">Terms of Service</a>
+          <a href="#faq" class="hover:text-slate-400">FAQ</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
